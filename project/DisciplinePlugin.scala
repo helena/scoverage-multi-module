@@ -1,12 +1,14 @@
 
-import sbt._, Keys._
+import sbt._
+import Keys._
 import sbt.plugins.JvmPlugin
+import scalafix.sbt.ScalafixPlugin
 import scoverage.ScoverageKeys._
 
 object AkkaDisciplinePlugin extends AutoPlugin {
 
   override def trigger: PluginTrigger = allRequirements
-  override def requires: Plugins = JvmPlugin
+  override def requires: Plugins = JvmPlugin && ScalafixPlugin
 
   override lazy val projectSettings = disciplineSettings
 
@@ -15,7 +17,7 @@ object AkkaDisciplinePlugin extends AutoPlugin {
 
   lazy val scoverageSettings = Seq(
     coverageMinimum := 90,
-    coverageFailOnMinimum := true,
+    coverageFailOnMinimum := false,
     coverageOutputHTML := true,
     coverageHighlighting := {
       import sbt.librarymanagement.{ SemanticSelector, VersionNumber }

@@ -1,7 +1,5 @@
 name := "scoverage-multi-module-jenkins"
 
-enablePlugins(AkkaDisciplinePlugin)
-
 lazy val root = project.
 	aggregate(one, two)
 
@@ -13,6 +11,6 @@ lazy val two = project.
 		dependsOn(one)
 
 lazy val commonSettings = Seq(
-    scalaVersion := "2.12.8",
+    scalaVersion := "2.12.8", // 2.13.0-M5
     libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.6-SNAP6" % "test")
 

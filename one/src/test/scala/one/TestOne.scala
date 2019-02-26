@@ -1,6 +1,6 @@
 package one
 
-import org.scalatest._
+import org.scalatest.{WordSpec, Matchers}
 
 import scala.util.Success
 
